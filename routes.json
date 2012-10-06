@@ -1,0 +1,11 @@
+[
+    {
+        "settings": [ "master" ],
+        "perf test index": {
+            "verbs": ["get"],
+            "path": "/",
+            "call": "master.index"
+        }
+    }
+]
+

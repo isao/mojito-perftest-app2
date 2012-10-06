@@ -1,0 +1,16 @@
+{
+    "name": "mojito_perftest_app2",
+    "description": "Mojito performance test application",
+    "version": "0.0.1",
+    "author": {
+        "name": "Julien Lecomte",
+        "email": "jlecomte@yahoo-inc.com"
+    },
+    "dependencies": {
+        "mojito": "0.5 pr1",
+        "microtime": "*"
+    },
+    "engines": {
+        "node": "0.6.x"
+    }
+}

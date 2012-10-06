@@ -1,0 +1,29 @@
+[{
+    "settings": [ "master" ],
+
+    "appPort": 8666,
+
+    "shareYUIInstance": true,
+
+    "middleware": [
+         "mojito-handler-static",
+         "mojito-parser-body",
+         "mojito-parser-cookies",
+         "mojito-contextualizer",
+         "mojito-handler-tunnel",
+         "mojito-router",
+         "mojito-handler-dispatcher"
+    ],
+
+    "specs": {
+        "master": {
+            "type": "MasterMojit"
+        }
+    },
+
+    "log": {
+        "server": {
+            "level": "warn"
+        }
+    }
+}]
