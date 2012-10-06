@@ -8,6 +8,7 @@
     },
     "dependencies": {
         "mojito": "0.5 pr1",
+        "mojito-shaker": "2.0.x",
         "microtime": "*"
     },
     "engines": {

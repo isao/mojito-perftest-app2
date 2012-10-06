@@ -1,3 +1,4 @@
 node_modules
 artifacts
+autoload
 mojits/Mojit*

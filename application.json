@@ -5,6 +5,10 @@
 
     "shareYUIInstance": true,
 
+    "yui": {
+        "dependencyCalculations": "precomputed+ondemand"
+    },
+
     "middleware": [
          "mojito-handler-static",
          "mojito-parser-body",
@@ -16,14 +20,53 @@
     ],
 
     "specs": {
+        "htmlframe": {
+            "type": "ShakerHTMLFrameMojit",
+            "config": {
+                "deploy": true,
+                "enableDynamicTitle": true,
+                "child": {
+                    "base": "master"
+                }
+            }
+        },
+
         "master": {
-            "type": "MasterMojit"
+            "type": "MasterMojit",
+            "config": {
+                "foo": "bar"
+            }
         }
     },
 
     "log": {
         "server": {
-            "level": "warn"
+            "level": "error"
         }
-    }
+    },
+
+    "shaker": {
+        "routeBundle": {
+            "perf-test-index": [
+                "Mojit1.index",
+                "Mojit2.index",
+                "Mojit3.index",
+                "Mojit4.index",
+                "Mojit5.index",
+                "Mojit6.index",
+                "Mojit7.index",
+                "Mojit8.index",
+                "Mojit9.index",
+                "Mojit10.index"
+            ]
+        },
+        "task": "raw",
+        "module": null,
+        "taskConfig": null
+    },
+
+    "mojitsDirs": [
+        "mojits",
+        "node_modules/mojito-shaker/mojits"
+    ]
 }]

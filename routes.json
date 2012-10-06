@@ -1,10 +1,10 @@
 [
     {
         "settings": [ "master" ],
-        "perf test index": {
+        "perf-test-index": {
             "verbs": ["get"],
             "path": "/",
-            "call": "master.index"
+            "call": "htmlframe.index"
         }
     }
 ]

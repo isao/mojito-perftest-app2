@@ -3,16 +3,8 @@
 YUI.add('MasterMojit', function (Y, NAME) {
 
     var cfg = { children: {} },
-        microtime,
-        now,
+        now = require('microtime').now,
         i;
-
-    try {
-        microtime = require('microtime');
-        now = microtime.now;
-    } catch (e) {
-        now = Date.now;
-    }
 
     for (i = 1; i <= 50; i++) {
         cfg.children['slot-' + i] = {
@@ -21,6 +13,57 @@ YUI.add('MasterMojit', function (Y, NAME) {
             action: 'index',
             config: {
                 whatever: i
+            },
+            params: {
+                route: {},
+                url: {},
+                body: {
+                    data: {
+                        "class": "Result",
+                        "type": "ysm-ads",
+                        "id": "a2316f38-0e90-4349-b067-286219a1c61c",
+                        "meta": {
+                            "region": "Sidebar",
+                            "dla": "50",
+                            "dlb": "50",
+                            "adg": "",
+                            "mscpcsb": "HdPJ.2HLfw--",
+                            "relscore": "0.425887",
+                            "impid": "1503118507",
+                            "rnkscore": "41221",
+                            "mscpc": "HdPJ.2HLfw--",
+                            "mscpcml": "HdPJ.2HLfw--",
+                            "spq": "obama",
+                            "pos": "1",
+                            "cpg": "0.15",
+                            "ctv": "",
+                            "rebate": "false",
+                            "rnk": "3",
+                            "bid": "EG7.DLnKZK0a",
+                            "bidpos": "3",
+                            "lstid": "12003028304",
+                            "trm": "",
+                            "cnq": "obama",
+                            "adult": "G",
+                            "omm": "Broad",
+                            "cost": "HdPJ.2HLfw--",
+                            "cid": "",
+                            "ecpi": "1",
+                            "SSRB": "ZQAqAA8ADwAPAAAQ9AABhqAAAKZdAD7l9AAAABgAAASwBLAEsAAST4AAEk+A",
+                            "clkb": "Ir5BlUfOea0-"
+                        },
+                        "data": {
+                            "abstract": "Would you re-elect <strong>Obama</strong>? Share Your Opinion Here.",
+                            "title": "Romney vs. <strong>Obama</strong>",
+                            "officialSite": "",
+                            "sourceTitle": "<strong>Newsmax.com</strong>",
+                            "iconUrl": "",
+                            "sourceUrl": "<strong>Newsmax.com</strong>",
+                            "url": "http://1594284.r.msn.com/?ld=4v_uhFISi1xPZZ2vr9Ba_INj9f94LWO-063RNWQORG-Aas2XHWnRLumLcJnQYawVz-n6aJj-jsLD5BsesVPaKA9rVFSUw3CRYYwXkG68AuEa1GmFbLdk2MtfhzYLwqPGzlMTQtzezOrU1BEQ7ReiEIe6RT0-2QOeBanckHEwyWH2lsuAadZwExxhB4xa9Hf-0zyMugASgC2pCyHHXeMyRPvhf2whKnE-IZdkIZ3Cn1-xiWyOXdbHNuXs0JiNUgqFGLJ4FDEa4ZFEVAnEzzacjuarZHgOhqeSKWoDZu4fRH1nZnbUEO8iPsH-kCuB2LzA-Kg8RCTh7p37ogUbsu1lERUiqp-_EQJmNzPYPAREGe-uP6WBIQqKiO1DXXeubyV5jaOEQvieGS6154"
+                        }
+                    }
+                },
+                file: {}
             }
         };
     }
@@ -28,36 +71,12 @@ YUI.add('MasterMojit', function (Y, NAME) {
     Y.namespace('mojito.controllers')[NAME] = {
 
         index: function (ac) {
-
-            var duration = 0,
-                start;
-
-            Y.each(Y.mojito.controllers, function (c) {
-                var f = c.index;
-                if (f) {
-                    c.index = function (ac) {
-                        var start = now();
-                        f.call(c, ac);
-                        duration += (now() - start);
-                    };
-                }
-            });
-
-            start = now();
+            var start = now();
 
             ac.composite.execute(cfg, function (data, meta) {
                 ac.done(data, meta);
-
                 var total = now() - start;
-
-                Y.log('============================================================================', 'warn');
-                Y.log('Overall time: ' + (microtime ? total / 1000 : total) + ' msec', 'warn');
-                if (duration > 0) {
-                    Y.log('Time spent in our code: ' + (microtime ? duration / 1000 : duration) + ' msec [' + Math.round((100 * duration) / total) + '%]');
-                } else {
-                    Y.log('Execute the app a second time to see how much time was spent in the app code', 'warn');
-                }
-                Y.log('============================================================================', 'warn');
+                Y.log('Total time: ' + (total / 1000) + ' msec', 'error');
             });
         }
     };
