@@ -75,8 +75,26 @@ YUI.add('MasterMojit', function (Y, NAME) {
 
             ac.composite.execute(cfg, function (data, meta) {
                 ac.done(data, meta);
-                var total = now() - start;
-                Y.log('Total time: ' + (total / 1000) + ' msec', 'error');
+                var duration = (now() - start) / 1000;
+                Y.log('Duration: ' + duration + ' msec', 'warn');
+
+                if (typeof global.iterations === 'undefined') {
+                    global.iterations = 0;
+                }
+
+                global.iterations++;
+
+                if (typeof global.totaltime === 'undefined') {
+                    global.totaltime = 0;
+                }
+
+                global.totaltime += duration;
+
+                if ((global.iterations % 100) === 0) {
+                    Y.log('Average: ' + (global.totaltime / global.iterations) + ' msec', 'error');
+                    global.iterations = global.totaltime = 0;
+
+                }
             });
         }
     };
