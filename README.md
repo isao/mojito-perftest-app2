@@ -7,4 +7,6 @@ To run the app:
     $ ./node_modules/mojito-shaker/bin/mojito-shake
     $ ./node_modules/mojito/bin/mojito start
 
-You may run `create.sh` multiple times...
+Note: You may run `create.sh` multiple times...
+
+At that point, the app is available at `http://localhost:8666/`
