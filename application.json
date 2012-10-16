@@ -3,13 +3,14 @@
 
     "appPort": 8666,
 
-    "shareYUIInstance": true,
-
     "yui": {
-        "dependencyCalculations": "precomputed+ondemand"
+        "config": {
+            "debug": false
+        }
     },
 
     "middleware": [
+         "mojito-combo-handler",
          "mojito-handler-static",
          "mojito-parser-body",
          "mojito-parser-cookies",
@@ -36,12 +37,6 @@
             "config": {
                 "foo": "bar"
             }
-        }
-    },
-
-    "log": {
-        "server": {
-            "level": "error"
         }
     },
 
