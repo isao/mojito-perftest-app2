@@ -8,7 +8,7 @@ CONTROLLER=$( cat <<EOF
 YUI.add('MOJIT_NAME', function (Y, NAME) {
     'use strict';
 
-    var now = require('microtime').now;
+    var now = function() { return +new Date };
 
     Y.namespace('mojito.controllers')[NAME] = {
         index: function (ac) {

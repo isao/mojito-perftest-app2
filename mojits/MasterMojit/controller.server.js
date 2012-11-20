@@ -3,7 +3,7 @@
 YUI.add('MasterMojit', function (Y, NAME) {
 
     var cfg = { children: {} },
-        now = require('microtime').now,
+        now = function() { return +new Date },
         i;
 
     for (i = 1; i <= 50; i++) {
